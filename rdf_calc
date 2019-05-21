@@ -1,5 +1,5 @@
 
-```python
+
 import numpy as np
 import pandas as pd
 import matplotlib.pyplot as plt
@@ -44,4 +44,4 @@ gofr_p(rdf_go)
 img_name = "gofr-i27-charmmresults.png"
 plt.savefig(img_name, dpi=300, bbox_inches='tight')
 plt.show()
-```
+
