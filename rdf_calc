@@ -12,8 +12,8 @@ bio.physics.sucks(14)
 rcParams['figure.figsize']=5,4
 # sb.set_style('whitegrid')
 
-rdf_eef1="/media/data0/sadra/i27_mscale/bulk/eef1-i27/rdf-i27-eef1/gr-i27-eef1.dat"
-rdf_go="/media/data0/sadra/i27_mscale/bulk/go-i27/rdf/rdf-i27-go-traj2/gr-i27-go.dat"
+rdf_eef1="addres/file1.dat"
+rdf_go="address/file2.dat"
 entry_pattern = '\s+[0-9]+\.[0-9]+\s+[0-9]\.[0-9]+'
 
 def gofr_p(inp_name):
@@ -41,7 +41,7 @@ def gofr_p(inp_name):
 
 gofr_p(rdf_eef1)
 gofr_p(rdf_go)
-img_name = "gofr-i27-charmmresults.png"
+img_name = "file.png"
 plt.savefig(img_name, dpi=300, bbox_inches='tight')
 plt.show()
 
