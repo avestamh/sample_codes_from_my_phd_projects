@@ -15,3 +15,6 @@ hydrogen_bond_average_clpp.py
 
 rmsd_clpp.py
 ![image](https://github.com/user-attachments/assets/8c67c861-ee01-4c57-9e68-11f3395f5173)
+
+qnn_secondary_structure_heatmap.py
+![image](https://github.com/user-attachments/assets/f37669b8-05b7-4814-a7f2-27d8fe39d352)
