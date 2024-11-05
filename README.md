@@ -17,4 +17,11 @@ rmsd_clpp.py
 ![image](https://github.com/user-attachments/assets/8c67c861-ee01-4c57-9e68-11f3395f5173)
 
 qnn_secondary_structure_heatmap.py
+
 ![image](https://github.com/user-attachments/assets/f37669b8-05b7-4814-a7f2-27d8fe39d352)
+
+Kmeans clustering:
+![image](https://github.com/user-attachments/assets/fd4da604-59ab-438d-aaf9-efa269da1145)
+
+![image](https://github.com/user-attachments/assets/1f9b8d51-1686-4b21-9041-9e5fd56c0064)
+
