@@ -6,3 +6,9 @@ Hirarchical.py
 phi_theta_angles.py
 
 ![image](https://github.com/user-attachments/assets/d98b71dc-e87a-4807-b2f9-07478458e71e)
+
+phi_theta_angle_calculation.py
+![image](https://github.com/user-attachments/assets/d6771a9d-7589-420d-9c91-9d31c78276b5)
+
+hydrogen_bond_average.py
+![image](https://github.com/user-attachments/assets/5459b585-45eb-41b3-8fbc-32c0bf142638)
