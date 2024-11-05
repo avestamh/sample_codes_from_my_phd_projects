@@ -1,6 +1,6 @@
 #----------------------------------------------------------------------
 # Written by: Sadra Avestan
-# Date: February 2019
+# Date: Oct 3 2019
 # Description: the plot will show the heatmap of the qnn results for the protein secondary structure.
 #-----------------------------------------------------------------------
 import matplotlib as m
