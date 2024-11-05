@@ -4,4 +4,5 @@ meshgrid.py
 Hirarchical.py
 ![image](https://github.com/user-attachments/assets/fda49a82-0ff4-49d6-8d67-dd4acf886b7d)
 phi_theta_angles.py
-![image](https://github.com/user-attachments/assets/6da415d2-1a66-4cc8-8865-2f9bb4eb1a89)
+
+![image](https://github.com/user-attachments/assets/d98b71dc-e87a-4807-b2f9-07478458e71e)
