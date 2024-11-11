@@ -35,5 +35,6 @@ gridspec_and_subplots
 
 
 animation_gif.py
-![image](https://github.com/user-attachments/assets/a64e0088-78e4-4770-8f55-29b5269ac6d8)
+![animation](https://github.com/user-attachments/assets/269701cb-f057-4659-83e6-22fa2ac7909f)
+
 
