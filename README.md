@@ -34,4 +34,6 @@ gridspec_and_subplots
 ![image](https://github.com/user-attachments/assets/7ce025bf-28eb-48d3-b29e-35b0a6d7ed02)
 
 
+animation_gif.py
+![image](https://github.com/user-attachments/assets/a64e0088-78e4-4770-8f55-29b5269ac6d8)
 
