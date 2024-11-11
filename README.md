@@ -25,3 +25,13 @@ Kmeans clustering:
 
 ![image](https://github.com/user-attachments/assets/1f9b8d51-1686-4b21-9041-9e5fd56c0064)
 
+multiple_density_maps_and_histo_gram_gridspec.py
+![image](https://github.com/user-attachments/assets/e222315e-f610-4e83-b8ec-5edb1865ae92)
+
+multiple_3d_density_maps.py
+![image](https://github.com/user-attachments/assets/adf333a9-ebb7-48c6-9435-541212a68b83)
+gridspec_and_subplots
+![image](https://github.com/user-attachments/assets/7ce025bf-28eb-48d3-b29e-35b0a6d7ed02)
+
+
+
