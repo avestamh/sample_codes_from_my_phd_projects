@@ -1,0 +1,166 @@
+* This is CHARMM script to pull i27 using clpy k-b go model
+*
+dimension chsize 1000000
+
+set topar finaltopar
+
+set temp = @T !temperature for heatbath during pulling
+set timestep = 0.01 
+set nsteps = 10000 ! number of timesteps
+eten on ! turn on the special interaction term for go models
+
+if @domain .eq. gfp then
+	set last_res = 252
+endif
+
+if @domain .eq. i27 then
+        set last_res = 111
+endif
+
+	
+
+bomlev -2
+
+read rtf card name @topar/go-1do2-i27-1x2ssra.top
+
+read param card name @topar/go-1do2-i27-1x2ssra.param
+!read param card name go_i27-2ssra_renum.param append
+
+read psf card name @topar/go-1do2-i27-1x2ssra.psf
+!read psf card name go-1do2-i27-2ssra-reformatted2.psf
+read coor card name @topar/go-1do2-i27-1x2ssra.cor
+
+
+
+bomlev 0
+
+scalar fbeta set 0.1 sele all end ! use friction coefficient to couple to langevin
+! heatbath.
+!shake bond tol 1.0e-6 param ! use constraint to fix bond
+
+!-----------------------------------------
+!constrain center of mass of clpy segments
+!-----------------------------------------
+!"CONS HMCM" Constrain center of mass of selected atoms
+
+coor stat sele segid SEGA end
+cons hmcm force 5.0 weig refx ?xave refy ?yave refz ?zave -
+	sele segid SEGA end
+
+
+coor stat sele segid SEGB end
+cons hmcm force 5.0 weig refx ?xave refy ?yave refz ?zave -
+	sele segid SEGB end
+
+
+coor stat sele segid SEGC end
+cons hmcm force 5.0 weig refx ?xave refy ?yave refz ?zave -
+	sele segid SEGC end
+
+
+coor stat sele segid SEGD end
+cons hmcm force 5.0 weig refx ?xave refy ?yave refz ?zave -
+	sele segid SEGD end
+
+
+coor stat sele segid SEGE end
+cons hmcm force 5.0 weig refx ?xave refy ?yave refz ?zave -
+	sele segid SEGE end
+
+
+coor stat sele segid SEGF end
+cons hmcm force 5.0 weig refx ?xave refy ?yave refz ?zave -
+	sele segid SEGF end
+
+
+!-------------------------------------------------------
+! Overwrite main coors with the coor file from last move
+!-------------------------------------------------------
+read coor card name intermediate.cor
+
+define loop sele resid 89:93 .and. .not. segid @domain end
+coor stat sele loop end
+calc ztyr = ?zave
+calc upz = @ztyr - 5
+calc lowz = @ztyr + 5
+
+calc slice = @ztyr
+
+define passedconfined sele segid @domain .and. prop z .lt. @lowz .and. prop z .gt. @slice end
+
+coor stat sele passedconfined end
+print coor sele passedconfined end
+calc upid = ?selires - 5
+calc lowid = ?selires
+
+define confined sele (segid @domain ) .and. prop z .gt. @upz -
+	.and. prop z .lt. @lowz .and. ires @upid:@lowid end
+
+coor stat sele confined end
+set nconfined ?nsel
+print coor sele confined end
+
+if ?nsel .eq. 0 then
+	SYSTEM "touch stop.flag"
+	goto flag_nsel0
+endif
+!-----------------------------------------------
+! Random number generator of charmm 35 is broken
+! Read random number form an external file
+!-----------------------------------------------
+!stream random.dat
+
+! if mode .eq. pull then
+random clcg gauss @sigma offs @fmean
+set f ?rand
+set zdir 1 
+! endif
+
+calc f = @f / @nconfined
+
+MMFP
+GEO  cylinder -
+     xref 0.0 yref 0.0 zref 0.0 xdir 0.0 ydir 0.0 zdir 1.0 -
+     force 5 droff 0.0 sele confined end
+END
+
+
+if mode .eq. pull then
+	pull force @f xdir 0 ydir 0 zdir @zdir sele confined end
+endif
+
+pull list
+
+open read formated unit 31 name restart.rea
+open write formated unit 32 name restart.res
+open write unformatt unit 34 name @icyc-@imode.dcd
+
+energy
+dynamics leap langevin restart timestep @timestep -
+nstep @nsteps nprint 1000 iprfrq 50000 -
+firstt @temp finalt @temp twindl -10.0 twindh 10.0 -
+ichecw 1 ieqfrq 500 iasors 1 iasvel 1 -
+nsavc 1000 nsavv 0 iunvel -1 -
+iunrea 31 iunwri 32 kunit -1 iuncrd 34 -
+inbfrq 0 ilbfrq 0 tbath @temp echeck 9999999999.0 !!!iseed @iseed
+
+open unit 119 write card name intermediate.cor
+write coor card unit 119
+* pulled coor of rep-pull
+*
+close unit 119  
+
+coor stat sele segid @domain .and. resid 5 end
+
+if ?ZAVE .gt. @lowz then
+	system "touch stop.flag"
+
+endif
+
+label flag_nsel0
+
+stop
+
+
+
+
