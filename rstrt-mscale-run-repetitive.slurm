@@ -11,10 +11,10 @@
 export LD_LIBRARY_PATH=/home/wangqi/shared/gcc-5.2.0/lib64:$LD_LIBRARY_PATH
 export PATH=/home/wangqi/shared/gcc-5.2.0/bin:$PATH
 
-export PATH=/home/wangqi/shared/openmpi/bin:$PATH
-export MPI_LIB=/home/wangqi/shared/openmpi/lib
-export MPI_INCLUDE=/home/wangqi/shared/openmpi/include
-export LD_LIBRARY_PATH=/home/wangqi/shared/openmpi/lib:$LD_LIBRARY_PATH
+export PATH=/home/sadra/shared/openmpi/bin:$PATH
+export MPI_LIB=/home/sadra/shared/openmpi/lib
+export MPI_INCLUDE=/home/sadra/shared/openmpi/include
+export LD_LIBRARY_PATH=/home/sadra/shared/openmpi/lib:$LD_LIBRARY_PATH
 #-------------------------------------------------------------------------
 
 #-----------------------variables------------
