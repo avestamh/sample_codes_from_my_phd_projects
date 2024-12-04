@@ -1,3 +1,5 @@
+## this code is for benchmarking the number of CPUs used for MSCALE simulation
+
 import os
 
 def gen_sys_config(totalcores):
