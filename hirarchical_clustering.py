@@ -1,5 +1,6 @@
 #----------------------------
-## written by Sadra Dec 2019
+## Author: Sadra Avestan
+## Dec 2019
 #----------------------------
 
 # Hierarchical (agglomerative) clustering 
